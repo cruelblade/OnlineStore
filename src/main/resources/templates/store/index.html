@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Store</title>
+    <link rel="stylesheet" th:href="@{../styles/css/store.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/js/scrollingScript.js"></script>
+</head>
+<body>
+    <header>
+        <div id="logo" onclick="slowScroll('#top')">
+            <span>OnlineStore</span>
+        </div>
+        <div id="about">
+            <a href="#" title="Возможности">Возможности</a>
+            <a href="#"  title="Преимущества">Преимущества</a>
+            <a href="#" title="Контакты">Контакты</a>
+            <a href="#" title="Ответы на вопросы">FAQ</a>
+        </div>
+    </header>
+
+    <div id="menu">
+
+    </div>
+
+    <div id="product-list">
+        <div id="product" th:each="product : ${products}">
+            <div id="preview-images">
+                <img id="preview-image" th:src="@{'/images/' + ${product.getProductName()} + '.jpg'}" alt=""
+                    onerror="this.onerror=null; this.src='../images/default.jpg'"/>
+            </div>
+            <div id="descriptions">
+                <p id="description" th:text="${product.getProductName()}"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
